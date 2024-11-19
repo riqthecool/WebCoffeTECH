@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Meu Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="profile-container">
+    <h1 class="profile-title">Meu Perfil</h1>
+
+    <!-- Botões -->
+    <a href="@Url.Action("MeusPedidos", "Cart")" class="btn-profile">Meus Pedidos</a>
+    <a href="@Url.Action("MeusDados", "Home")" class="btn-profile">Meus Dados</a>
+    <a href="@Url.Action("MeusCartoes", "Home")" class="btn-profile">Cartões</a>
+    <a href="@Url.Action("MeusEnderecos", "Home")" class="btn-profile">Meus Endereços</a>
+</div>
+
+<style>
+    .btn-profile {
+        background-color: #6D4C41;
+        color: white;
+        width: 280px;
+        height: 60px;
+        border-radius: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-decoration: none;
+    }
+
+        .btn-profile:hover {
+            background-color: #5d3d35;
+            text-decoration: none;
+            color: white;
+        }
+
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+
+    .profile-title {
+        font-size: 2.5rem;
+        color: #6D4C41;
+        margin-bottom: 30px;
+    }
+</style>

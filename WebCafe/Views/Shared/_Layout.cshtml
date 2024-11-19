@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebCafe</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebCafe.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        img.imagem-retangular {
+            border-radius: 15px !important;
+            width: 280px;
+            height: 520px;
+        }
+
+        div#main {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #3e2723;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+            .sidebar a {
+                padding: 10px 15px;
+                text-decoration: none;
+                font-size: 18px;
+                color: white;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidebar a:hover {
+                    background-color: #575757;
+                }
+
+            .sidebar .closebtn {
+                position: absolute;
+                top: 0;
+                right: 10px;
+                font-size: 36px;
+            }
+
+        main {
+            height: 100vh !important;
+            transition: margin-left 0.5s;
+            padding: 16px;
+            margin: 0;
+            background-image: url('/imagens/a.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+
+        a.imagem-menu {
+            width: fit-content;
+        }
+
+        .img-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .portifolio-imagens {
+            display: flex;
+            justify-content: space-around;
+            width: 60%;
+        }
+
+        .btn-brown {
+            background-color: #6D4C41;
+            color: white;
+            transition: background-color 0.3s;
+            width: 280px;
+            height: 60px;
+            border-radius: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+            .btn-brown:hover {
+                background-color: #5d3d35;
+            }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .portifolio-texto {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-brown">
+        <a class="navbar-brand" href="javascript:void(0)" onclick="openNav()">Menu</a>
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+            <img src="/imagens/logo-coffeetech.png" alt="Coffee Tech" style="height: 40px;">
+        </a>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <!-- Ajustado para o método correto -->
+                    <a class="nav-link" href="@Url.Action("Carrinho", "Cart")">Carrinho</a>
+                </li>
+                @if (Context.Session.GetString("NomeCompleto") == null)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Login", "Auth")">Login</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <span class="navbar-text text-white">Olá, @Context.Session.GetString("NomeCompleto")!</span>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Menu lateral -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        @if (Context.Session.GetString("NomeCompleto") == null)
+        {
+            <a href="@Url.Action("Login", "Auth")">Entrar ou Cadastre-se</a>
+        }
+        else
+        {
+            <span class="text-white mx-3">Olá, @Context.Session.GetString("NomeCompleto")!</span>
+        }
+        <a href="@Url.Action("MeusPedidos", "Cart")">Meus Pedidos</a>
+        <a href="@Url.Action("SobreNos", "Home")">Sobre Nós</a>
+        <a href="@Url.Action("Portfolio", "Home")">Portfólio</a>
+        <a href="@Url.Action("MeuPerfil", "Home")">Meu Perfil</a>
+        <a href="@Url.Action("NossaMissao", "Home")">Nossa Missão</a>
+        <a href="@Url.Action("DuvidasFrequentes", "Home")">Dúvidas Frequentes</a>
+        <a href="@Url.Action("FaleConosco", "Home")">Fale Conosco</a>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div id="main">
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger text-center">@ViewBag.ErrorMessage</div>
+        }
+
+        @RenderBody()
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "Portfolio";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilo do catálogo */
+        .catalogo {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .item-catalogo {
+            width: 300px;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        .imagem-catalogo img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .descricao-catalogo {
+            background-color: #3e2723;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+            .descricao-catalogo h3 {
+                margin-bottom: 10px;
+            }
+
+            .descricao-catalogo p {
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <div class="catalogo">
+        <!-- Arábica -->
+        <a href="@Url.Action("AddToCart", "Cart", new { id = 1, imageUrl = "/imagens/imagem-arabica.png", name = "Café Arábica", price = 250 })" class="item-catalogo">
+            <div class="imagem-catalogo">
+                <img src="~/imagens/imagem-arabica.png" alt="Arábica">
+            </div>
+            <div class="descricao-catalogo">
+                <h3>Arábica</h3>
+                <p>Café Arábica: grão fino e suave, amplamente popular, usado em cafés especiais.</p>
+                <p><strong>R$250,00</strong></p>
+            </div>
+        </a>
+
+        <!-- Acaiá -->
+        <a href="@Url.Action("AddToCart", "Cart", new { id = 2, imageUrl = "/imagens/imagem-acaia.png", name = "Café Acaiá", price = 250 })" class="item-catalogo">
+            <div class="imagem-catalogo">
+                <img src="~/imagens/imagem-acaia.png" alt="Acaiá">
+            </div>
+            <div class="descricao-catalogo">
+                <h3>Acaiá</h3>
+                <p>Café Acaiá: Grão original brasileiro com notas suaves, corpo médio e aroma intenso.</p>
+                <p><strong>R$250,00</strong></p>
+            </div>
+        </a>
+
+        <!-- Bourbon -->
+        <a href="@Url.Action("AddToCart", "Cart", new { id = 3, imageUrl = "/imagens/imagem-bourbon.png", name = "Café Bourbon", price = 250 })" class="item-catalogo">
+            <div class="imagem-catalogo">
+                <img src="~/imagens/imagem-bourbon.png" alt="Bourbon">
+            </div>
+            <div class="descricao-catalogo">
+                <h3>Bourbon</h3>
+                <p>Café Bourbon: Variedade doce e delicada, apreciada em cafés gourmet.</p>
+                <p><strong>R$250,00</strong></p>
+            </div>
+        </a>
+
+        <!-- Catuaí -->
+        <a href="@Url.Action("AddToCart", "Cart", new { id = 4, imageUrl = "/imagens/imagem-catuaí.png", name = "Café Catuaí", price = 250 })" class="item-catalogo">
+            <div class="imagem-catalogo">
+                <img src="~/imagens/imagem-catuaí.png" alt="Catuaí">
+            </div>
+            <div class="descricao-catalogo">
+                <h3>Catuaí</h3>
+                <p>Café Catuaí: Híbrido muito produtivo, resistente e versátil.</p>
+                <p><strong>R$250,00</strong></p>
+            </div>
+        </a>
+
+        <!-- Geisha -->
+        <a href="@Url.Action("AddToCart", "Cart", new { id = 5, imageUrl = "/imagens/imagem-geisha.png", name = "Café Geisha", price = 250 })" class="item-catalogo">
+            <div class="imagem-catalogo">
+                <img src="~/imagens/imagem-geisha.png" alt="Geisha">
+            </div>
+            <div class="descricao-catalogo">
+                <h3>Geisha</h3>
+                <p>Café Geisha: Grão premium de origem etíope, conhecido por sua doçura floral e alta acidez.</p>
+                <p><strong>R$250,00</strong></p>
+            </div>
+        </a>
+
+        <!-- Kona -->
+        <a href="@Url.Action("AddToCart", "Cart", new { id = 6, imageUrl = "/imagens/imagem-kona.png", name = "Café Kona", price = 250 })" class="item-catalogo">
+            <div class="imagem-catalogo">
+                <img src="~/imagens/imagem-kona.png" alt="Kona">
+            </div>
+            <div class="descricao-catalogo">
+                <h3>Kona</h3>
+                <p>Café Kona: Variedade cultivada no Havaí, de sabor suave e aromático.</p>
+                <p><strong>R$250,00</strong></p>
+            </div>
+        </a>
+
+        <!-- Robusta -->
+        <a href="@Url.Action("AddToCart", "Cart", new { id = 7, imageUrl = "/imagens/imagem-robusta.png", name = "Café Robusta", price = 250 })" class="item-catalogo">
+            <div class="imagem-catalogo">
+                <img src="~/imagens/imagem-robusta.png" alt="Robusta">
+            </div>
+            <div class="descricao-catalogo">
+                <h3>Robusta</h3>
+                <p>Café Robusta: Grão encorpado e amargo, com maior teor de cafeína.</p>
+                <p><strong>R$250,00</strong></p>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿@model List<WebCafe.Models.Endereco>
+
+<div class="profile-container">
+    <h1 class="profile-title">Meus Endereços</h1>
+
+    @if (Model.Any())
+    {
+        <ul>
+            @foreach (var endereco in Model)
+            {
+                <li>
+                    <p>@endereco.Rua, @endereco.Numero - @endereco.Bairro, @endereco.Cidade, @endereco.CEP</p>
+                    <a class="btn btn-primary" asp-action="EditarEndereco" asp-route-id="@endereco.Id">Editar</a>
+                    <a class="btn btn-danger" asp-action="ExcluirEndereco" asp-route-id="@endereco.Id">Excluir</a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Nenhum endereço encontrado.</p>
+    }
+
+    <a class="btn btn-success" asp-action="NovoEndereco">Adicionar Novo Endereço</a>
+</div>

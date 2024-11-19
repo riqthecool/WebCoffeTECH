@@ -1,0 +1,162 @@
+﻿@{
+    ViewData["Title"] = "Fale Conosco";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            background-image: url('/imagens/fundo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            margin-top: 50px;
+        }
+
+        .title {
+            font-size: 2rem;
+            color: #6D4C41;
+        }
+
+        .text-section {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"] {
+            background-color: #6D4C41;
+            color: white;
+            border: 1px solid #3e2723;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .btn-brown {
+            background-color: #6D4C41;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+            .btn-brown:hover {
+                background-color: #5d3d35;
+            }
+    </style>
+</head>
+<body>
+    <div class="container content">
+        <!-- Metade Superior -->
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="texto-branco">VOCÊ É DA TURMA DO DESCONTO?</h2>
+                <p class="texto-branco">Receba aqui seu cupom de 10% OFF + FRETE GRÁTIS na sua primeira compra!</p>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label for="nome" class="texto-branco">Nome:</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Digite seu primeiro nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="texto-branco">E-mail:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Digite seu melhor e-mail">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone" class="texto-branco">Telefone:</label>
+                        <input type="text" class="form-control" id="telefone" placeholder="Digite seu telefone">
+                    </div>
+                    <div class="form-group">
+                        <label for="nascimento" class="texto-branco">Data de Nascimento:</label>
+                        <input type="text" class="form-control" id="nascimento" placeholder="dd/mm/aaaa">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Metade Inferior -->
+        <div id="footer-section">
+            <div class="row mt-5">
+                <!-- Contato e Redes Sociais -->
+                <div class="col-md-3">
+                    <h4>Nosso contato</h4>
+                    <button class="btn btn-link"><i class="fa fa-phone"></i></button>
+                    <button class="btn btn-link"><i class="fa fa-envelope"></i></button>
+                    <a href="https://wa.me/seunumerodetelefone" target="_blank" class="btn btn-link">
+                        <i class="fab fa-whatsapp fa-1x"></i>
+                    </a>
+                </div>
+
+                <!-- Lista de Cafés -->
+                <div class="col-md-3">
+                    <h4>Nossos cafés</h4>
+                    <ul>
+                        <li>Café Arábica</li>
+                        <li>Café Bourbon</li>
+                        <li>Café Açaí</li>
+                        <li>Café Catuai</li>
+                        <li>Café Robusta</li>
+                        <li>Café Geisha</li>
+                        <li>Café Kona</li>
+                    </ul>
+                </div>
+
+                <!-- Institucional -->
+                <div class="col-md-3">
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li><a href="@Url.Action("SobreNos", "Home")">Sobre nós</a></li>
+                        <li><a href="@Url.Action("Portfolio", "Home")">Portfólio</a></li>
+                        <li><a href="@Url.Action("NossaMissao", "Home")">Nossa missão</a></li>
+                        <li><a href="@Url.Action("DuvidasFrequentes", "Home")">Dúvidas frequentes</a></li>
+                        <li><a href="@Url.Action("FaleConosco", "Home")">Fale conosco</a></li>
+                    </ul>
+                </div>
+
+                <!-- Atendimento e Informações -->
+                <div class="col-md-3">
+                    <h4>Atendimento</h4>
+                    <p>E-mail: <a href="mailto:sac@coffeetech.com.br">sac@coffeetech.com.br</a></p>
+                    <p>Horário de atendimento: Segunda à Sexta-feira 08:00 às 18:00</p>
+                    <h4>Para seu negócio</h4>
+                    <p>Para Cafeterias, Empórios, Escritórios, Eventos</p>
+                    <p><a href="#">Compre e pontue</a></p>
+                    <p><a href="#">Ver parceiros Coffee Tech</a></p>
+                    <p>Localização: 1331 Estr. Velha de Itapevi II, Cotia, São Paulo</p>
+                </div>
+            </div>
+
+            <!-- Rodapé com Logo e Redes Sociais -->
+            <div class="row mt-5 text-center">
+                <div class="col-md-12">
+                    <img src="~/imagens/logo-coffeetech.png" alt="Logo Coffee Tech">
+                    <p>Siga a Coffee Tech</p>
+                    <a href="https://www.youtube.com/seucanal" target="_blank" class="btn btn-link">
+                        <i class="fab fa-youtube fa-2x"></i>
+                    </a>
+                    <a href="https://www.instagram.com/seuperfil" target="_blank" class="btn btn-link">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                    <a href="https://www.facebook.com/seupagina" target="_blank" class="btn btn-link">
+                        <i class="fab fa-facebook fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

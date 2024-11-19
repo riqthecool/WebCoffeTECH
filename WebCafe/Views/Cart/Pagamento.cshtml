@@ -1,0 +1,143 @@
+﻿@model List<CartItem>
+
+@{
+    ViewData["Title"] = "Pagamento";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-left: 0;
+        }
+
+        .btn-brown {
+            background-color: #6D4C41;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+            .btn-brown:hover {
+                background-color: #5d3d35;
+            }
+
+        .list-group-item input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .card-payment, .pix-payment, .boleto-payment {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">ENDEREÇO E PAGAMENTO</h2>
+        <div class="row">
+            <!-- Coluna do endereço -->
+            <div class="col-md-6">
+                <h4>Selecionar Endereço</h4>
+                @if (ViewBag.Enderecos != null && ((List<WebCafe.Models.Endereco>)ViewBag.Enderecos).Any())
+                {
+                    <div class="list-group">
+                        @foreach (var endereco in (List<WebCafe.Models.Endereco>)ViewBag.Enderecos)
+                        {
+                            <label class="list-group-item">
+                                <input type="radio" name="EnderecoId" value="@endereco.Id" required>
+                                @endereco.Rua, @endereco.Numero - @endereco.Bairro, @endereco.Cidade
+                            </label>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p>Nenhum endereço cadastrado.</p>
+                }
+                <!-- Botão para cadastrar novo endereço -->
+                <a href="@Url.Action("NovoEndereco", "Endereco", new { returnUrl = Url.Action("Pagamento", "Cart") })" class="btn btn-primary mt-3">Cadastrar Novo Endereço</a>
+            </div>
+
+            <!-- Coluna de pagamento e resumo -->
+            <div class="col-md-6">
+                <!-- Métodos de pagamento -->
+                <h4>Forma de Pagamento</h4>
+                <button type="button" class="btn btn-block btn-brown" onclick="showPaymentSection('card-payment')">Cartão</button>
+                <button type="button" class="btn btn-block btn-brown" onclick="showPaymentSection('pix-payment')">PIX</button>
+                <a href="@Url.Action("Boleto", "Cart")" class="btn btn-block btn-brown" style="background-color: #795548; color: white;">Boleto</a>
+
+                <!-- Resumo do Carrinho -->
+                <div class="border p-3 mt-4" style="background-color: #f7f7f7;">
+                    <h4>Resumo do Carrinho</h4>
+                    <ul class="list-unstyled">
+                        @foreach (var item in Model)
+                        {
+                            <li>+ @item.Quantity kg @item.Name <span class="float-right">R$@(item.Price * item.Quantity)</span></li>
+                        }
+                    </ul>
+                    <p>+ Frete <span class="float-right">R$50,00</span></p>
+                    <hr />
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Aplique seu cupom">
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <strong>Total</strong>
+                        <strong>R$@ViewBag.TotalCarrinho</strong>
+                    </div>
+                </div>
+
+                <!-- Pagamento com Cartão -->
+                <div id="card-payment" class="card-payment mt-4">
+                    <h4>Pagamento com Cartão</h4>
+                    <p><strong>Valor Total: R$@ViewBag.TotalCarrinho</strong></p>
+                    <!-- Botão para cadastrar novo cartão -->
+                    <a href="@Url.Action("NovoCartao", "Cartao", new { returnUrl = Url.Action("Pagamento", "Cart") })" class="btn btn-primary">Cadastrar Novo Cartão</a>
+                    @if (ViewBag.Cartoes != null && ((List<WebCafe.Models.Cartao>)ViewBag.Cartoes).Any())
+                    {
+                        <div class="list-group mt-3">
+                            @foreach (var cartao in (List<WebCafe.Models.Cartao>)ViewBag.Cartoes)
+                            {
+                                <label class="list-group-item">
+                                    <input type="radio" name="CartaoId" value="@cartao.Id">
+                                    Cartão: **** **** **** @cartao.NumeroCartao.Substring(cartao.NumeroCartao.Length - 4)
+                                </label>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <!-- Pagamento com PIX -->
+                <div id="pix-payment" class="pix-payment mt-4">
+                    <h4>Pagamento com PIX</h4>
+                    <p>Escaneie o QR Code abaixo ou copie o código PIX.</p>
+                    <input type="text" class="form-control mb-2" value="12345678900.pix" readonly>
+                    <button class="btn btn-primary btn-block" onclick="copyPixCode()">Copiar Código PIX</button>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-lg btn-brown btn-block mt-4" id="finalizar-pedido">FINALIZAR COMPRA</button>
+    </div>
+
+    <script>
+        function showPaymentSection(section) {
+            document.querySelectorAll('.card-payment, .pix-payment, .boleto-payment').forEach(e => e.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+        }
+
+        function copyPixCode() {
+            const pixCode = document.querySelector("#pix-payment input").value;
+            navigator.clipboard.writeText(pixCode);
+            alert("Código PIX copiado!");
+        }
+
+        document.getElementById("finalizar-pedido").addEventListener("click", () => {
+            alert("Pedido finalizado com sucesso!");
+            window.location.href = '@Url.Action("MeusPedidos", "Cart")';
+        });
+    </script>
+</body>
+</html>

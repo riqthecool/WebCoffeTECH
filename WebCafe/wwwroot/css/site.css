@@ -1,0 +1,128 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+/* Cor de fundo e esquema de cores */
+body {
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+}
+
+.bg-brown {
+    background-color: #6f4e37;
+}
+
+.btn-brown:hover {
+    background-color: #5d3d35;
+}
+
+.btn-brown {
+    background-color: #6f4e37;
+    color: #fff;
+}
+
+    .btn-brown:hover {
+        background-color: #593e2b;
+        color: #fff;
+    }
+
+/* Estilo dos botões centrais com imagens */
+.img-fluid {
+    max-height: 250px;
+    width: auto;
+    object-fit: cover;
+}
+
+.imagem-retangular {
+    width: 75%; /* Largura total do contêiner */
+    height: 400px; /* Defina a altura que você deseja */
+    object-fit: cover; /* Para manter a proporção e cobrir a área */
+}
+
+.imagem-sobrenos {
+    width: 100%; /* Largura total do contêiner */
+    height: 475px; /* Defina a altura que você deseja */
+}
+
+.imagem-nossamissao {
+    width: 100%; /* Largura total do contêiner */
+    height: 475px; /* Defina a altura que você deseja */
+}
+
+.imagem-duvidasfrequentes {
+    width: 100%; /* Largura total do contêiner */
+    height: 330px; /* Defina a altura que você deseja */
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+#footer-section {
+    background-color: #6D4C41; /* Marrom escuro */
+    color: white; /* Cor do texto no rodapé */
+    padding: 20px; /* Espaçamento interno para que o texto não fique encostado nas bordas */
+}
+
+.catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px; /* Espaçamento entre os itens */
+    padding: 20px;
+}
+
+.item-catalogo {
+    flex-basis: 30%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #6D4C41; /* Fundo marrom para a descrição */
+    color: white;
+    text-decoration: none; /* Remover sublinhado dos links */
+    transition: transform 0.3s ease; /* Animação ao passar o mouse */
+}
+
+    .item-catalogo:hover {
+        transform: scale(1.05); /* Aumenta levemente o item ao passar o mouse */
+    }
+
+.imagem-catalogo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 5px solid #8B4513; /* Borda entre a imagem e o texto */
+}
+
+.descricao-catalogo {
+    padding: 15px;
+    background-color: #6D4C41; /* Metade de baixo marrom */
+}
+
+    .descricao-catalogo h3 {
+        margin: 0;
+        font-size: 1.5em;
+    }
+
+    .descricao-catalogo p {
+        margin-top: 10px;
+        font-size: 1em;
+    }
+
+.texto-branco {
+    color: white;
+}

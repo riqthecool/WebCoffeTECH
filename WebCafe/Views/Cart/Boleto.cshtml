@@ -1,0 +1,133 @@
+﻿
+
+<div class="boleto-container">
+    <!-- Cabeçalho -->
+    <div class="header">
+        <img src="/imagens/logo-coffeetech.png" alt="Logo Coffee Tech">
+        <div class="text-center">
+            <p>23791.11103 60000.000103 01000.222206 1 486220000000000</p>
+            <p><strong>Vencimento:</strong>@ViewData["DataVencimento"]</p>
+        </div>
+    </div>
+
+    <!-- Informações principais -->
+    <div class="row">
+        <div><strong>Local de pagamento:</strong> Pagável em qualquer agência bancária</div>
+        <div><strong>Cedente:</strong> Coffee Tech</div>
+    </div>
+
+    <div class="row">
+        <div><strong>Data do documento:</strong>@ViewData["DataDocumento"]</div>
+        <div><strong>Nº Documento:</strong> 1/1</div>
+    </div>
+
+    <div class="row">
+        <div><strong>Espécie Doc:</strong> RS</div>
+        <div><strong>Aceite:</strong> N</div>
+    </div>
+
+    <div class="row">
+        <div><strong>Data de processamento:</strong>@ViewData["DataDocumento"]</div>
+        <div><strong>Nosso número:</strong> 1111-8/00002222-5</div>
+    </div>
+
+    <!-- Tabela de valores -->
+    <table class="table">
+        <tr>
+            <td width="70%"><strong>Carteira</strong>: 01</td>
+            <td width="30%"><strong>Valor do documento</strong>:<br>R$ @ViewData["ValorTotal"]0</td>
+        </tr>
+    </table>
+
+    <!-- Instruções -->
+    <p><strong>Instruções (Texto de responsabilidade do cedente):</strong></p>
+    <p>Não receber após o vencimento. Boleto referente à compra de produtos Coffee Tech.</p>
+
+    <!-- Sacado -->
+    <table class="table">
+        <tr>
+            <td><strong>Sacado:</strong></td>
+        </tr>
+        <tr>
+            <td>
+                COFFEE TECH CNPJ: 00.000.000/0001-00<br>
+                1331 Estr. Velha de Itapevi II<br>
+                Cotia - São Paulo/SP - CEP: 00000-000
+            </td>
+        </tr>
+    </table>
+
+    <!-- Código de barras -->
+    <div class="barcode"></div>
+</div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .boleto-container {
+        width: 800px;
+        margin: auto;
+        border: 1px solid #000;
+        padding: 20px;
+        background-color: #fff;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #000;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+        .header img {
+            width: 100px;
+            height: auto;
+        }
+
+        .header .text-center {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+        .row div {
+            width: 48%;
+        }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+        .table tr td {
+            padding: 5px;
+            border: 1px solid #000;
+            font-size: 14px;
+        }
+
+    .barcode {
+        height: 80px;
+        width: 100%;
+        background-color: #000;
+        margin-top: 20px;
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+    }
+
+</style>

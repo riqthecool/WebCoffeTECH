@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Meus Dados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="profile-container">
+    <h1 class="profile-title">Meus Dados</h1>
+    <form method="post" asp-action="AtualizarDados" asp-controller="Home">
+        <input type="hidden" name="Id" value="@Model?.Id" />
+
+        <div class="form-group">
+            <label for="nomeCompleto">Nome Completo:</label>
+            <input type="text" class="form-control" id="nomeCompleto" name="NomeCompleto" value="@Model?.NomeCompleto" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" class="form-control" id="email" name="Email" value="@Model?.Email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cpf">CPF:</label>
+            <input type="text" class="form-control" id="cpf" name="CPF" value="@Model?.CPF" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" class="form-control" id="telefone" name="Telefone" value="@Model?.Telefone" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cep">CEP:</label>
+            <input type="text" class="form-control" id="cep" name="CEP" value="@Model?.CEP" required>
+        </div>
+
+        <div class="form-group position-relative">
+            <label for="senha">Senha:</label>
+            <div class="input-group">
+                <input type="password" class="form-control" id="senha" name="Senha" value="@Model?.Senha" required>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('senha')">
+                        <i class="fas fa-eye" id="toggle-senha-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dataCriacao">Data de Criação:</label>
+            <input type="text" class="form-control" id="dataCriacao" name="DataCriacao" value="@Model?.DataCriacao?.ToString("dd/MM/yyyy HH:mm")" readonly>
+        </div>
+
+        <button type="submit" class="btn btn-brown btn-block">Atualizar Dados</button>
+    </form>
+</div>
+
+<script>
+    function togglePasswordVisibility(fieldId) {
+        const passwordField = document.getElementById(fieldId);
+        const icon = document.getElementById("toggle-senha-icon");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
+</script>
+
+<style>
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .profile-title {
+        font-size: 2.5rem;
+        color: #6D4C41;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .btn-brown {
+        background-color: #6D4C41;
+        color: white;
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+
+        .btn-brown:hover {
+            background-color: #5d3d35;
+        }
+</style>

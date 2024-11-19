@@ -1,0 +1,43 @@
+﻿@model List<WebCafe.Models.Cartao>
+
+<div class="profile-container">
+    <h1 class="profile-title">Meus Cartões</h1>
+
+    <div class="mb-4">
+        <a href="@Url.Action("NovoCartao", "Home")" class="btn btn-brown">Adicionar Novo Cartão</a>
+    </div>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Número do Cartão</th>
+                    <th>Validade</th>
+                    <th>CVV</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cartao in Model)
+                {
+                    <tr>
+                        <td>@cartao.NumeroCartao</td>
+                        <td>@cartao.Validade</td>
+                        <td>@cartao.CVV</td>
+                        <td>
+                            <form method="post" asp-action="ExcluirCartao" asp-controller="Home">
+                                <input type="hidden" name="id" value="@cartao.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Você ainda não possui cartões cadastrados.</p>
+    }
+</div>

@@ -1,0 +1,35 @@
+﻿@model WebCafe.Models.Cartao
+
+<div class="profile-container">
+    <h1 class="profile-title">Adicionar Novo Cartão</h1>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <form method="post" asp-action="AdicionarCartao" asp-controller="Home">
+        <div class="form-group">
+            <label for="numeroCartao">Número do Cartão:</label>
+            <input type="text" class="form-control" id="numeroCartao" name="NumeroCartao" required>
+        </div>
+        <div class="form-group">
+            <label for="validade">Validade:</label>
+            <input type="text" class="form-control" id="validade" name="Validade" required>
+        </div>
+        <div class="form-group">
+            <label for="cvv">CVV:</label>
+            <input type="text" class="form-control" id="cvv" name="CVV" required>
+        </div>
+        <button type="submit" class="btn btn-brown btn-block">Adicionar Cartão</button>
+    </form>
+</div>

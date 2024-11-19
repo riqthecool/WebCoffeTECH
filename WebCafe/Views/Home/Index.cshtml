@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .img-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .imagem-retangular {
+            border-radius: 15px;
+            width: 280px;
+            height: 520px;
+            margin: 10px;
+        }
+
+        .portifolio-imagens a {
+            margin: 10px;
+        }
+
+        .btn-brown {
+            background-color: #6D4C41;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 48px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            text-decoration: none;
+        }
+
+            .btn-brown:hover {
+                background-color: #5d3d35;
+            }
+    </style>
+</head>
+<body>
+    <!-- Seção de botões centrais -->
+    <div class="img-container">
+        <div class="row my-5 text-center portifolio-imagens">
+            <a class="imagem-menu" href="@Url.Action("Portfolio", "Home")">
+                <img src="/imagens/cafe_vermelho.jpg" class="imagem-retangular rounded" alt="Café Vermelho">
+            </a>
+            <a class="imagem-menu" href="@Url.Action("Portfolio", "Home")">
+                <img src="/imagens/cafe_torrado.jpg" class="imagem-retangular rounded" alt="Café Torrado">
+            </a>
+            <a class="imagem-menu" href="@Url.Action("Portfolio", "Home")">
+                <img src="/imagens/cafe_verde.jpg" class="imagem-retangular rounded" alt="Café Verde">
+            </a>
+        </div>
+    </div>
+
+    <!-- Botões inferiores -->
+    <div class="img-container">
+        <div class="row text-center my-3 portifolio-textos">
+            <div class="col">
+                <a href="@Url.Action("SobreNos", "Home")" class="btn btn-brown">Sobre Nós</a>
+            </div>
+            <div class="col">
+                <a href="@Url.Action("Portfolio", "Home")" class="btn btn-brown">Portfólio</a>
+            </div>
+            <div class="col">
+                <a href="@Url.Action("NossaMissao", "Home")" class="btn btn-brown">Nossa Missão</a>
+            </div>
+            <div class="col">
+                <a href="@Url.Action("DuvidasFrequentes", "Home")" class="btn btn-brown">Dúvidas Frequentes</a>
+            </div>
+            <div class="col">
+                <a href="@Url.Action("FaleConosco", "Home")" class="btn btn-brown">Fale Conosco</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

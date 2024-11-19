@@ -1,0 +1,30 @@
+﻿@model Cartao
+
+@{
+    ViewData["Title"] = "Editar Cartão";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="profile-container">
+    <h1 class="profile-title">Editar Cartão</h1>
+    <form method="post" asp-action="AtualizarCartao" asp-controller="Home">
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="form-group">
+            <label for="numeroCartao">Número do Cartão:</label>
+            <input type="text" class="form-control" id="numeroCartao" name="Numero" value="@Model.NumeroCartao" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="validade">Validade:</label>
+            <input type="text" class="form-control" id="validade" name="Validade" value="@Model.Validade" required>
+        </div>
+
+        <div class="form-group">
+            <label for="codigoSeguranca">CVV:</label>
+            <input type="text" class="form-control" id="codigoSeguranca" name="CodigoSeguranca" value="@Model.CVV" required>
+        </div>
+
+        <button type="submit" class="btn btn-brown btn-block">Salvar Alterações</button>
+    </form>
+</div>

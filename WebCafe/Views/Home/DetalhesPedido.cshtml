@@ -1,0 +1,22 @@
+﻿@model WebCafe.Models.PedidoViewModel
+@{
+    ViewData["Title"] = "Detalhes do Pedido";
+}
+
+<div class="container">
+    <h1 class="title">Detalhes do Pedido</h1>
+    <div class="pedido-card">
+        <div class="pedido-info">
+            <p><strong>ID:</strong> @Model.Id</p>
+            <p><strong>Endereço de Entrega:</strong> @Model.EnderecoEntrega</p>
+            <p><strong>Resumo do Pedido:</strong> @Model.ResumoPedido</p>
+            <p><strong>Status:</strong> @Model.StatusPedido</p>
+            <p><strong>Quantidade de Itens:</strong> @Model.QuantidadeItens</p>
+            <p><strong>Valor Total:</strong> R$ @Model.ValorTotal.ToString("F2")</p>
+            <p><strong>Tipo de Pagamento:</strong> @Model.TipoPagamento</p>
+            <p><strong>Nota Fiscal:</strong> @Model.NotaFiscal</p>
+            <p><strong>Data de Criação:</strong> @Model.DataCriacao?.ToString("dd/MM/yyyy HH:mm")</p>
+        </div>
+        <a href="@Url.Action("MeusPedidos", "Pedido")" class="btn btn-brown">Voltar para Meus Pedidos</a>
+    </div>
+</div>

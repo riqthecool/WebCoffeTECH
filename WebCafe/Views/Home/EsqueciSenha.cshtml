@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Esqueci a Senha";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+            .container img {
+                width: 100px;
+                height: auto;
+            }
+
+        .title {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0 20px 0;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn-submit {
+            background-color: #6b4226;
+            color: #fff;
+            border: none;
+            padding: 10px 0;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .btn-submit:hover {
+                background-color: #5a3721;
+            }
+
+        .imagem-cadeado {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Imagem de um escudo com cadeado -->
+        <div class="imagem-cadeado">
+            <img src="https://img.icons8.com/ios-glyphs/90/lock--v1.png" alt="Cadeado" />
+        </div>
+
+        <!-- Título -->
+        <div class="title">Problemas para logar?</div>
+
+        <!-- Descrição -->
+        <div class="description">Escreva um email e enviaremos um código de redefinição de senha</div>
+
+        <!-- Campo de email -->
+        <input type="email" placeholder="Digite seu email" required>
+
+        <!-- Botão de enviar -->
+        <button class="btn-submit">ENVIAR</button>
+    </div>
+</body>
+</html>

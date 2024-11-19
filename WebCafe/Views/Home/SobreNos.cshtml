@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "Sobre Nós";
+    Layout = "~/Views/Shared/_Layout.cshtml"; /* Referência ao layout global */
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - WebCafe</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilo do menu lateral (off-canvas sidebar) */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #3e2723; /* Marrom */
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000; /* Valor alto para sobrepor */
+        }
+
+            .sidebar a {
+                padding: 10px 15px;
+                text-decoration: none;
+                font-size: 18px;
+                color: white;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidebar a:hover {
+                    background-color: #575757;
+                }
+
+            .sidebar .closebtn {
+                position: absolute;
+                top: 0;
+                right: 10px;
+                font-size: 36px;
+            }
+
+        /* Estilo para empurrar o conteúdo quando o menu abrir */
+        #main {
+            transition: margin-left 0.5s;
+            padding: 16px;
+        }
+
+        /* Definição da classe btn-brown */
+        .btn-brown {
+            background-color: #6D4C41;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+            .btn-brown:hover {
+                background-color: #5d3d35;
+            }
+
+        /* Ajustes de margin para evitar conflito com o menu lateral */
+        body {
+            padding-left: 0;
+            background-color: #f8f9fa;
+        }
+
+        .content {
+            margin-top: 50px;
+        }
+
+        .title {
+            font-size: 2rem;
+            color: #6D4C41;
+        }
+
+        .text-section {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .image-section {
+            text-align: right;
+        }
+
+            .image-section img {
+                max-width: 100%;
+            }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <!-- Conteúdo principal -->
+        <div class="container content">
+            <h1 class="title text-center">SOBRE NÓS</h1>
+            <div class="row">
+                <div class="col-md-8 text-section">
+                    <p>
+                        A Coffee Tech surgiu da determinação de fazer uma mudança no centro da cidade, transformando um antigo terreno abandonado em uma fazenda urbana de café.
+                        Com poucos recursos, mas muita criatividade e paixão, começamos a trabalhar no projeto. Primeiro, pesquisamos técnicas inovadoras de agricultura urbana e sustentável, adaptando-as para o cultivo de café.
+                        <br><br>
+                        Com as primeiras mudas de café plantadas, enfrentamos desafios inesperados, desde a gestão de recursos hídricos até a proteção contra pragas urbanas. No entanto, com determinação inabalável, perseveramos, aprendendo com cada obstáculo e ajustando nossas estratégias conforme necessário.
+                        <br><br>
+                        Hoje, a fazenda urbana Coffee Tech é muito mais do que um local de produção de café, é um oásis verde no coração da cidade, um símbolo de esperança e renovação.
+                        Com nosso trabalho árduo e compromisso com a sustentabilidade, mostramos que é possível cultivar conexões profundas mesmo em meio à agitação urbana.
+                    </p>
+                </div>
+                <div class="col-md-4 image-section">
+                    <img src="~/imagens/seus-cafes.png" class="imagem-sobrenos rounded" alt="Café Beans Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funções para abrir e fechar o menu lateral
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+</body>
+</html>

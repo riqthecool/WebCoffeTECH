@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Nossa Missão";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilo do conteúdo específico da página */
+        .content {
+            margin-top: 50px;
+        }
+
+        .title {
+            font-size: 2rem;
+            color: #6D4C41;
+        }
+
+        .text-section {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .image-section {
+            text-align: right;
+        }
+
+            .image-section img {
+                max-width: 100%;
+                border-radius: 10px;
+            }
+    </style>
+</head>
+<body>
+    <!-- Conteúdo da página -->
+    <div class="container content">
+        <h1 class="title text-center">NOSSA MISSÃO</h1>
+        <div class="row">
+            <div class="col-md-4 image-section">
+                <img src="~/imagens/xicara-cafe.png" class="imagem-nossamissao rounded" alt="Xícara de Café">
+            </div>
+            <div class="col-md-8 text-section">
+                <p>
+                    Nossa missão no Coffee Tech é proporcionar experiências extraordinárias aos amantes de café em todo o mundo, oferecendo produtos de alta qualidade que refletem nossa paixão pela excelência e nosso compromisso com a sustentabilidade.
+                    <br><br>
+                    Buscamos promover um impacto positivo em todas as etapas da cadeia de produção, desde o cultivo responsável dos grãos até a experiência final na xícara. Nosso objetivo é não apenas fornecer um café excepcional, mas também inspirar um estilo de vida consciente e valorizar as comunidades que nos apoiam.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

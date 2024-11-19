@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Meus Pedidos";
+}
+
+@model List<PedidoModel>
+
+<div class="container">
+    <h1 class="title">Meus Pedidos</h1>
+    <p class="subtitle">Aqui você encontra os resumos das suas compras realizadas.</p>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            @foreach (var pedido in Model)
+            {
+                <div class="col-md-4">
+                    <div class="pedido-card">
+                        <div class="pedido-info">
+                            <p><strong>ID:</strong> @pedido.Id</p>
+                            <p><strong>Endereço:</strong> @pedido.EnderecoEntrega</p>
+                            <p><strong>Resumo:</strong> @pedido.ResumoPedido</p>
+                            <p><strong>Status:</strong> @pedido.StatusPedido</p>
+                            <p><strong>Itens:</strong> @pedido.QuantidadeItens</p>
+                            <p><strong>Valor:</strong> R$ @pedido.ValorTotal.ToString("F2")</p>
+                            <p><strong>Data:</strong> @pedido.DataCriacao?.ToString("dd/MM/yyyy")</p>
+                        </div>
+                        <div class="pedido-acoes">
+                            <button class="btn btn-marron">Rastrear</button>
+                            <button class="btn btn-marron">Nota Fiscal</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>Você ainda não realizou nenhum pedido.</p>
+    }
+</div>

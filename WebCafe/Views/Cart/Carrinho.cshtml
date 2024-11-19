@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "Carrinho";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Fazenda Urbana Café</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        .btn-brown {
+            background-color: #6D4C41;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+            .btn-brown:hover {
+                background-color: #5d3d35;
+            }
+    </style>
+</head>
+<body>
+    @model List<CartItem>
+
+    <div class="row">
+        <!-- Coluna da lista de itens do carrinho -->
+        <div class="col-md-8">
+            <h2>CARRINHO <i class="fas fa-shopping-cart"></i></h2>
+
+            @if (Model != null && Model.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Imagem</th>
+                            <th>Produto</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Total</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><img src="@item.ImageUrl" alt="@item.Name" style="width: 50px;"></td>
+                                <td>@item.Name</td>
+                                <td>R$@item.Price</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <form asp-action="DecreaseQuantity" method="post" class="mr-2">
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">-</button>
+                                        </form>
+                                        <span>@item.Quantity kg</span>
+                                        <form asp-action="IncreaseQuantity" method="post" class="ml-2">
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td>R$@(item.Price * item.Quantity)</td>
+                                <td>
+                                    <form asp-action="RemoveFromCart" method="post">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-danger">Remover</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <!-- Botão Voltar para o Portfólio -->
+                <div class="mt-3">
+                    <a href="@Url.Action("Portfolio", "Home")" class="btn btn-sm btn-brown">Voltar</a>
+                </div>
+            }
+            else
+            {
+                <p>O carrinho está vazio.</p>
+            }
+        </div>
+
+        <!-- Coluna do resumo do carrinho -->
+        <div class="col-md-4">
+            <h3>Resumo do Carrinho</h3>
+            <ul class="list-group mb-3">
+                @foreach (var item in Model)
+                {
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                        <div>
+                            <h6 class="my-0">@item.Name</h6>
+                            <small class="text-muted">@item.Quantity kg</small>
+                        </div>
+                        <span class="text-muted">R$@(item.Price * item.Quantity)</span>
+                    </li>
+                }
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Frete:</span>
+                    <strong>R$50,00</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Desconto:</span>
+                    <strong>R$@(0)</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total Geral:</span>
+                    <strong>R$@(Model.Sum(item => item.Price * item.Quantity) + 50)</strong>
+                </li>
+            </ul>
+
+            <!-- Trecho do botão de pagamento -->
+            <div class="text-center mt-4">
+                <a href="@Url.Action("Pagamento", "Cart")" class="btn btn-brown btn-lg btn-block">
+                    Ir para Pagamento
+                </a>
+            </div>
+
+            <!-- Campo para cálculo de frete -->
+            <div class="mt-3">
+                <h5>Calcular Frete</h5>
+                <input type="text" class="form-control mb-2" placeholder="Digite seu CEP" id="cepFrete" />
+                <button class="btn btn-primary" onclick="calcularFrete()">Calcular Frete</button>
+            </div>
+
+            <!-- Campo para cupom de desconto -->
+            <div class="mt-3">
+                <h5>Aplicar Cupom</h5>
+                <input type="text" class="form-control mb-2" placeholder="Digite seu cupom" id="cupomDesconto" />
+                <button class="btn btn-success" onclick="aplicarCupom()">Aplicar Cupom</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calcularFrete() {
+            var cep = document.getElementById('cepFrete').value;
+            if (cep) {
+                alert("Frete calculado para o CEP " + cep);
+            } else {
+                alert("Por favor, insira um CEP válido.");
+            }
+        }
+
+        function aplicarCupom() {
+            var cupom = document.getElementById('cupomDesconto').value;
+            if (cupom.toLowerCase() === 'zerarfrete') {
+                alert("Cupom aplicado! Frete gratuito.");
+            } else {
+                alert("Cupom inválido.");
+            }
+        }
+    </script>
+</body>
+</html>
